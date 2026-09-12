@@ -252,17 +252,23 @@ function renderShell(){
   nav.innerHTML = MODULES.map(function(m){
     return '<button class="navbtn'+(activeModule===m.id?' active':'')+'" data-nav="'+m.id+'">'+icon(m.icon,19)+'<span class="navlabel">'+m.label+'</span></button>';
   }).join('');
-  nav.querySelectorAll('[data-nav]').forEach(function(b){ b.addEventListener('click', function(){ navigate(b.getAttribute('data-nav')); }); });
-
-  var tabbar=document.getElementById('tabbar');
-  tabbar.innerHTML = MODULES.filter(function(m){return m.id!=='settings';}).map(function(m){
-    return '<button class="'+(activeModule===m.id?'active':'')+'" data-nav="'+m.id+'">'+icon(m.icon,19)+'<span>'+m.label+'</span></button>';
-  }).join('');
-  tabbar.querySelectorAll('[data-nav]').forEach(function(b){ b.addEventListener('click', function(){ navigate(b.getAttribute('data-nav')); }); });
+  nav.querySelectorAll('[data-nav]').forEach(function(b){ b.addEventListener('click', function(){ navigate(b.getAttribute('data-nav')); closeDrawer(); }); });
 
   document.getElementById('pageTitle').textContent = MODULES.filter(function(m){return m.id===activeModule;})[0].label;
 }
 function navigate(mod){ activeModule=mod; render(); }
+
+/* ============================================================
+   MOBILE NAV DRAWER
+   ============================================================ */
+function openDrawer(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('navScrim').classList.add('show'); }
+function closeDrawer(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('navScrim').classList.remove('show'); }
+function initDrawer(){
+  document.getElementById('hamburgerBtn').addEventListener('click', openDrawer);
+  document.getElementById('drawerCloseBtn').addEventListener('click', closeDrawer);
+  document.getElementById('navScrim').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+}
 
 /* ============================================================
    MAIN RENDER DISPATCH
@@ -961,6 +967,7 @@ function runSearch(){
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function(){
   initSearch();
+  initDrawer();
   initPersistence();
 });
 })();
