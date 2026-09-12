@@ -1077,7 +1077,7 @@ label.field textarea {
   grid-template-columns: 210px 1fr;
   gap: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .todos-layout {
     grid-template-columns: 1fr;
   }
@@ -1342,7 +1342,7 @@ label.field textarea {
   color: var(--ink-soft);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   #sidebar {
     display: none;
   }
