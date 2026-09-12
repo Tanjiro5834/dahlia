@@ -1,0 +1,36 @@
+<title>Bloom Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand"><span class="brand-mark">🌸</span><span class="brand-text">Bloom</span></div>
+    <nav class="navlist" id="navlist"></nav>
+    <div class="sidebar-foot">
+      <div class="sync-pill"><span class="sync-dot" id="syncDot"></span><span id="syncLabel">Connecting…</span></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <div class="tape"></div>
+      <h1 id="pageTitle" class="hand">Calendar</h1>
+      <div class="spacer"></div>
+      <div class="searchbox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="searchInput" type="text" placeholder="Search everything…" autocomplete="off">
+        <div id="searchResults" style="display:none;"></div>
+      </div>
+      <div id="topActions"></div>
+    </header>
+    <div id="content"></div>
+  </main>
+
+  <nav id="tabbar"></nav>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toast"></div>
+
+<script src="/js/script.js" type="module"></script>
